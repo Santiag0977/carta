@@ -1,0 +1,271 @@
+/* Estilos Generales */
+body {
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+    transition: background 0.8s ease-in-out;
+    overflow-x: hidden;
+    color: #333;
+}
+
+.hidden {
+    display: none !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+}
+
+/* Pantalla de Contraseña */
+#password-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background-color: #FFC0CB; /* Rosa base */
+    /* Patrón de fondo: Flores y Mickey Mouse (usando URLs de ejemplo de IconArchive y Pngtree para demostración)
+       Reemplaza estas URLs con imágenes que tengas permiso para usar o que sean de dominio público/libres.
+       Para un mejor rendimiento y fiabilidad, descarga las imágenes y úsalas localmente si es posible.
+       O busca patrones CSS para "flores" y "mickey mouse"
+    */
+    background-image:
+        url('https://www.transparentpng.com/thumb/mickey-mouse/cartoon-mickey-mouse-hd-image-JTCx1c.png'), /* Mickey - Ajusta tamaño y opacidad */
+        url('https://png.pngtree.com/png-vector/20220331/ourmid/pngtree-seamless-pattern-with-spring-flowers-and-leaves-vector-png-image_32478949.png'); /* Flores - Ajusta opacidad */
+    background-repeat: space, repeat; /* Mickey espaciado, flores repetidas */
+    background-size: 80px, 200px; /* Tamaño de Mickey, tamaño de patrón de flores */
+    background-blend-mode: overlay, normal; /* Cómo se mezclan las imágenes con el color de fondo */
+    background-position: center center, center center;
+    padding: 20px;
+    box-sizing: border-box;
+    text-align: center;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+
+#password-container.active {
+    opacity: 1;
+}
+
+.password-box {
+    background-color: rgba(255, 255, 255, 0.85); /* Caja blanca semi-transparente */
+    padding: 30px 40px;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    max-width: 400px;
+    width: 90%;
+}
+
+#password-container h1 {
+    color: #D81B60; /* Rosa oscuro */
+    margin-bottom: 10px;
+    font-size: 2em;
+}
+
+.password-prompt {
+    margin-bottom: 20px;
+    color: #555;
+    font-size: 1.1em;
+}
+
+#password-input {
+    padding: 12px 18px;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    width: calc(100% - 38px); /* Ajuste por padding */
+    box-sizing: border-box;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+}
+
+#password-input:focus {
+    border-color: #FF69B4; /* Rosa más fuerte */
+    outline: none;
+}
+
+#submit-password {
+    padding: 12px 25px;
+    background-color: #FF69B4;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 1rem;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+#submit-password:hover {
+    background-color: #E91E63; /* Rosa más oscuro */
+    transform: translateY(-2px);
+}
+
+#error-message {
+    color: #D32F2F; /* Rojo oscuro para error */
+    background-color: #FFCDD2; /* Fondo rojo claro */
+    border: 1px solid #D32F2F;
+    padding: 10px;
+    border-radius: 5px;
+    margin-top: 15px;
+    transition: opacity 0.3s ease;
+}
+
+/* Pantalla de la Carta */
+body.letter-view-bg {
+    /* Fondo con flores suaves */
+    background-color: #FFF0F5; /* LavenderBlush, un rosa muy pálido */
+    /* Ejemplo de patrón de flores suave con CSS (si no quieres usar imagen) */
+    background-image:
+        linear-gradient(45deg, rgba(255,182,193,0.2) 25%, transparent 25%),
+        linear-gradient(-45deg, rgba(255,182,193,0.2) 25%, transparent 25%),
+        linear-gradient(45deg, transparent 75%, rgba(255,182,193,0.2) 75%),
+        linear-gradient(-45deg, transparent 75%, rgba(255,182,193,0.2) 75%);
+    background-size: 30px 30px;
+    background-position: 0 0, 0 15px, 15px -15px, -15px 0px;
+}
+
+#letter-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center; /* Centra la carta verticalmente */
+    min-height: calc(100vh - 80px); /* Altura menos el footer y controles de música aprox. */
+    padding: 20px;
+    box-sizing: border-box;
+    opacity: 0;
+    transition: opacity 0.8s ease-in-out 0.3s; /* Retraso para aparecer después de ocultar contraseña */
+}
+
+#letter-section.active {
+    opacity: 1;
+}
+
+#letter-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#letter {
+    background-color: #fff;
+    padding: 35px 45px;
+    border-radius: 15px;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+    width: 90%;
+    max-width: 700px;
+    min-height: 350px;
+    box-sizing: border-box;
+    transform: scale(0.95);
+    transition: transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) 0.5s, opacity 0.5s ease-out 0.5s; /* Transición con rebote ligero */
+    opacity: 0; /* Se controla con JS para la animación de entrada */
+    overflow-y: auto;
+    max-height: 70vh;
+}
+
+#letter-section.active #letter {
+    transform: scale(1);
+    opacity: 1;
+}
+
+#letter-text {
+    font-family: 'Parisienne', cursive; /* Fuente manuscrita elegante */
+    font-size: 2rem; /* Tamaño base */
+    line-height: 1.8;
+    color: #444;
+    text-align: left;
+}
+
+/* Controles de Música */
+#music-controls {
+    margin-top: 25px;
+    text-align: center;
+}
+
+#play-pause-button {
+    background-color: #FF85C1; /* Rosa claro */
+    color: white;
+    border: none;
+    padding: 12px 28px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+#play-pause-button:hover {
+    background-color: #FF69B4;
+    transform: scale(1.05);
+}
+
+/* Pie de Página */
+#page-footer {
+    width: 100%;
+    text-align: center;
+    padding: 20px 0;
+    font-size: 0.95rem;
+    color: #666;
+    background-color: rgba(255, 255, 255, 0.6); /* Fondo semi-transparente */
+    position: relative;
+    bottom: 0;
+    opacity: 0;
+    transition: opacity 0.8s ease-in-out 1s; /* Aparece después de la carta */
+}
+
+#page-footer.active {
+    opacity: 1;
+}
+
+/* Estilos Responsive */
+@media (max-width: 768px) {
+    .password-box {
+        padding: 25px 30px;
+    }
+    #password-container h1 {
+        font-size: 1.8em;
+    }
+    #letter {
+        padding: 30px 35px;
+        min-height: 300px;
+    }
+    #letter-text {
+        font-size: 1.7rem;
+        line-height: 1.7;
+    }
+}
+
+@media (max-width: 480px) {
+    .password-box {
+        padding: 20px;
+        width: 95%;
+    }
+    #password-container h1 {
+        font-size: 1.6em;
+    }
+    .password-prompt {
+        font-size: 1em;
+    }
+    #password-input {
+        padding: 10px 15px;
+        width: calc(100% - 32px); /* Ajuste por padding */
+    }
+    #submit-password {
+        padding: 10px 20px;
+        font-size: 0.9rem;
+    }
+    #letter {
+        padding: 20px 25px;
+        border-radius: 10px;
+        max-height: 75vh; /* Más espacio en móviles */
+    }
+    #letter-text {
+        font-size: 1.4rem; /* Un poco más pequeño para mejor lectura en móviles */
+    }
+    #play-pause-button {
+        padding: 10px 22px;
+        font-size: 0.85rem;
+    }
+    #page-footer {
+        font-size: 0.85rem;
+    }
+}

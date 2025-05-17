@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Una Sorpresa para Ti</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Parisienne&family=Roboto:wght@300;400&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="password-container" class="active">
+        <div class="password-box">
+            <h1>Un Mensaje Especial</h1>
+            <p class="password-prompt">Por favor, ingresa la contraseña:</p>
+            <input type="password" id="password-input" placeholder="Contraseña">
+            <button id="submit-password">Entrar</button>
+            <p id="error-message" class="hidden">Contraseña incorrecta. Intentá de nuevo.</p>
+        </div>
+    </div>
+
+    <div id="letter-section" class="hidden">
+        <div id="letter-container">
+            <div id="letter">
+                <p id="letter-text">
+                    Querida Roxana,
+                    <br><br>
+                    He preparado este pequeño rincón digital solo para ti,
+                    con la esperanza de que te guste y te saque una sonrisa.
+                    <br><br>
+                    Eres una persona muy especial, y quería encontrar una forma
+                    diferente y original para expresarte mi cariño.
+                    <br><br>
+                    Espero que este detalle te alegre el día.
+                    <br><br>
+                    Con todo mi afecto,
+                    <br>
+                    Santi
+                </p>
+            </div>
+        </div>
+
+        <div id="music-controls">
+            <audio id="background-music" loop>
+                <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3" type="audio/mpeg">
+                Tu navegador no soporta el elemento de audio.
+            </audio>
+            <button id="play-pause-button">Reproducir Música</button>
+        </div>
+    </div>
+
+    <footer id="page-footer" class="hidden">
+        <p>Con cariño, de Santi</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
